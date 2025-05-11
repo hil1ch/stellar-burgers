@@ -26,7 +26,7 @@ export const userOrderSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getOrders.pending, (state) => {
-        state.isLoading = false;
+        state.isLoading = true;
       })
 
       .addCase(getOrders.rejected, (state) => {

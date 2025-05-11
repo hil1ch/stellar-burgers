@@ -35,10 +35,8 @@ const App = () => {
       <AppHeader />
       <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
-        <Route path='/feed'>
-          <Route index element={<Feed />} />
-          <Route path=':number' element={<OrderInfo />} />
-        </Route>
+        <Route path='/feed' element={<Feed />} />
+        <Route path='/feed/:number' element={<OrderInfo />} />
         <Route path='/ingredients/:id' element={<IngredientDetails />} />
         <Route
           path='/login'
@@ -103,7 +101,7 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title={''} onClose={() => navigate(-1)}>
+              <Modal title='' onClose={() => navigate(-1)}>
                 <OrderInfo />
               </Modal>
             }
@@ -111,7 +109,7 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal title='Детали ингридиента' onClose={() => navigate(-1)}>
+              <Modal title='Детали ингредиента' onClose={() => navigate(-1)}>
                 <IngredientDetails />
               </Modal>
             }

@@ -43,8 +43,8 @@ export const ingredientSlice = createSlice({
       })
 
       .addCase(getIngredients.fulfilled, (state, action) => {
-        state.ingredients = action.payload;
         state.isLoading = false;
+        state.ingredients = action.payload;
       });
   }
 });

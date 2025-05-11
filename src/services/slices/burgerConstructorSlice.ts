@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { TConstructorIngredient } from '@utils-types';
-import { v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
-type TConstructorState = {
+export type TConstructorState = {
   bun: TConstructorIngredient | null;
   ingredients: TConstructorIngredient[];
 };
@@ -13,27 +13,20 @@ const initialState: TConstructorState = {
 };
 
 export const burgerConstructorSlice = createSlice({
-  name: 'constructor',
+  name: 'constructorIngredient',
   initialState,
   reducers: {
-    addItem: {
-      reducer: (state, action: PayloadAction<TConstructorIngredient>) => {
-        if (action.payload.type === 'bun') {
-          state.bun = action.payload;
-        } else {
-          state.ingredients.push(action.payload);
-        }
-      },
-
-      prepare: (ingredient: TConstructorIngredient) => {
-        const id = v4();
-        return { payload: { ...ingredient, id } };
+    addItem: (state, action: PayloadAction<TConstructorIngredient>) => {
+      if (action.payload.type === 'bun') {
+        state.bun = action.payload;
+      } else {
+        state.ingredients.push(action.payload);
       }
     },
 
     deleteItem: (state, action: PayloadAction<TConstructorIngredient>) => {
       state.ingredients = state.ingredients.filter(
-        (item) => item.id !== action.payload.id
+        (item) => item._id !== action.payload._id
       );
     },
 
@@ -43,7 +36,6 @@ export const burgerConstructorSlice = createSlice({
       state.ingredients = action.payload;
     }
   },
-
   selectors: {
     selectItems: (state: TConstructorState) => state
   }
