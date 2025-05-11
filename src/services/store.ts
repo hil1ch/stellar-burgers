@@ -13,6 +13,7 @@ import { newOrderSlice } from './slices/newOrderSlice';
 import { feedSlice } from './slices/feedSlice';
 import { ingredientSlice } from './slices/ingredientSlice';
 
+// Корневой редьюсер, объединяющего все слайсы
 const rootReducer = {
   [userSlice.name]: userSlice.reducer,
   [burgerConstructorSlice.name]: burgerConstructorSlice.reducer,

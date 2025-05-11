@@ -23,7 +23,9 @@ const App = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const background = location.state?.background;
+
+  //Если было открыто модальное окно, то переменная backgroundLocation будет содержать объект «предыдущего» маршрута
+  const backgroundLocation = location.state?.background;
 
   useEffect(() => {
     dispatch(getIngredients());
@@ -33,7 +35,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <AppHeader />
-      <Routes location={background || location}>
+      <Routes location={backgroundLocation || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
@@ -96,7 +98,7 @@ const App = () => {
         />
         <Route path='*' element={<NotFound404 />} />
       </Routes>
-      {background && (
+      {backgroundLocation && (
         <Routes>
           <Route
             path='/feed/:number'
