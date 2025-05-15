@@ -9,7 +9,7 @@ export interface IOrderState {
 
 export const getOrders = createAsyncThunk('order/byUser', getOrdersApi);
 
-const initialState: IOrderState = {
+export const initialState: IOrderState = {
   orders: [],
   isLoading: true
 };

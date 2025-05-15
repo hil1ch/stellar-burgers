@@ -12,7 +12,7 @@ export interface IFeedState {
 
 export const getFeeds = createAsyncThunk('orders/feeds', getFeedsApi);
 
-const initialState: IFeedState = {
+export const initialState: IFeedState = {
   orders: [],
   totalFeeds: 0,
   totalFeedsToday: 0,

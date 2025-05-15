@@ -24,7 +24,7 @@ export const ProfileUI: FC<ProfileUIProps> = ({
       onSubmit={handleSubmit}
     >
       <>
-        <div className='pb-6'>
+        <div className='pb-6' data-cy='input-profile-name'>
           <Input
             type={'text'}
             placeholder={'Имя'}

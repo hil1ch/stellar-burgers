@@ -11,7 +11,7 @@ import { TUser } from '@utils-types';
 export interface IUserState {
   isAuthChecked: boolean;
   user: TUser;
-  error: string | undefined;
+  error: string;
 }
 
 // Создание асинхронных thunk-экшенов
@@ -22,7 +22,7 @@ export const updateUser = createAsyncThunk('user/update', updateUserApi);
 export const logout = createAsyncThunk('user/logout', logoutApi);
 
 // Начальное состояние хранилища
-const initialState = {
+export const initialState = {
   isAuthChecked: false,
   user: {
     email: '',
